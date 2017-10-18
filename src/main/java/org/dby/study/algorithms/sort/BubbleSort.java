@@ -9,9 +9,9 @@ import java.util.Arrays;
  * @version: V1.0
  */
 public class BubbleSort {
-    public static double[] sort(double[] numbers, boolean asc) {
+    public static void sort(double[] numbers, boolean asc) {
         if (numbers == null) {
-            return numbers;
+            return;
         }
 
         for (int i = 0; i < numbers.length; i++) {
@@ -22,21 +22,24 @@ public class BubbleSort {
                     numbers[j + 1] = temp;
                 }
             }
+//            System.out.println(Arrays.toString(numbers));
         }
-        return numbers;
     }
 
     public static void main(String[] args) {
         long start = System.currentTimeMillis();
         int length = 50000;
-        double[] arr = new double[length];
-        for (int i = 0; i < length ; i++) {
-            arr[i] = Math.random() * length;
+        double[] numbers = new double[length];
+        for (int i = 0; i < numbers.length ; i++) {
+            numbers[i] = Math.random() * numbers.length;
         }
-        double[] arr2 = sort(arr, true);
 
-        if(length<100){
-            System.out.println(Arrays.toString(arr2));
+        numbers = new double[]{5, 3, 6, 1, 7, 9, 8, 2, 4};
+
+        sort(numbers, true);
+
+        if(numbers.length<100){
+            System.out.println(Arrays.toString(numbers));
         }
 
         System.out.println(System.currentTimeMillis() - start);
