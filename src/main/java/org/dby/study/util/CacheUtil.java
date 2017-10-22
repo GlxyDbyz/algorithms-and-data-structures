@@ -52,7 +52,7 @@ public class CacheUtil {
     /**
      * 删除缓存
      *
-     * @param key
+     * @param key 键值
      */
     public static void remove(String key) {
         caches.remove(key);
@@ -84,11 +84,11 @@ public class CacheUtil {
          *
          * @param value           值
          * @param expireTimeStamp 过期时间
-         * @return
+         * @return 缓存对象
          */
         private static Cache createCache(Object value, long expireTimeStamp) {
             Cache cache = new Cache();
-            cache.setValue(new WeakReference(value));
+            cache.setValue(new WeakReference<>(value));
             cache.setExpireTimeStamp(expireTimeStamp);
             return cache;
         }
@@ -107,7 +107,7 @@ public class CacheUtil {
          *
          * @return property value of value
          */
-        public WeakReference getValue() {
+        WeakReference<Object> getValue() {
             return value;
         }
 
@@ -116,7 +116,7 @@ public class CacheUtil {
          *
          * @param value value to be assigned to property value
          */
-        public void setValue(WeakReference<Object> value) {
+        void setValue(WeakReference<Object> value) {
             this.value = value;
         }
 
@@ -125,7 +125,7 @@ public class CacheUtil {
          *
          * @return property value of expireTimeStamp
          */
-        public long getExpireTimeStamp() {
+        long getExpireTimeStamp() {
             return expireTimeStamp;
         }
 
@@ -134,7 +134,7 @@ public class CacheUtil {
          *
          * @param expireTimeStamp value to be assigned to property expireTimeStamp
          */
-        public void setExpireTimeStamp(long expireTimeStamp) {
+        void setExpireTimeStamp(long expireTimeStamp) {
             this.expireTimeStamp = expireTimeStamp;
         }
     }
